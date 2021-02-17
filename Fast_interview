@@ -1,0 +1,49 @@
+Fast (02/16/2021) : Data Engineer
+==================================
+1. Find the stddev of the lst, dont use Pandas/Numpy
+  Input  = [1,2,3,4] 
+  Output = 1.118
+
+def std_dev(lst):
+    sums = sum(lst)
+    n = len(lst)
+    avg_lst = sums/n
+    sum_lst = 0
+    for i in avg_lst:
+      sum_lst += (i-avg_lst)**2
+    return (sum_lst/n)**0.5
+    
+ 2. Design a class to implement PromoCode, with functions :
+      insert: inserts only if promocode not available, O(1)
+      remove: remove the promocode,O(1)
+      retRandom() : to fetch a random promocode,O(1)
+      
+ Solution:
+ 
+ import random
+ class PromoCode:
+      def __init__(self):
+          self.promo_set = set()
+          self.promo_lst = []
+          self.promo_dict = {}
+          self.count = 0
+          
+      def insert(self,promo):
+          if promo not in self.promo_set:
+              self.promo_set.add(promo)
+              self.promo_lst.append(promo)
+              self.promo_dict[promo] = count
+              count+=1
+              
+      def remove(self,promo):
+              self.promo_lst[self.promo_dict[promo]],self.promo_lst[-1] = self.promo_lst[-1],self.promo_lst[self.promo_dict[promo]]
+              self.promo_lst.pop()
+              return self.promo_lst
+              
+      def getrandom(self):
+            return random.choice(self.promo_lst)
+          
+              
+      
+      
+
